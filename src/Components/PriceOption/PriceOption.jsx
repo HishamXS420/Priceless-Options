@@ -3,6 +3,7 @@ import Feature from "./Feature/Feature";
 
 const PriceOption = ({option}) => {
     const {name,price,features} = option;
+    
     return (
         <div className="bg-indigo-600 rounded-xl p-4 text-white flex flex-col justify-between text-center">
             <h2 className="text-center">
