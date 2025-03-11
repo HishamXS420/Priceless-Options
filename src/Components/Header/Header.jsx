@@ -14,7 +14,7 @@ const Header = () => {
   ];
 
   return (
-    <nav>
+    <nav className="text-black p-6 bg-yellow-200">
       {/* <div className="navbar bg-base-100 shadow-sm">
   <div className="navbar-start">
     <div className="dropdown">
@@ -60,10 +60,13 @@ const Header = () => {
         {
             open == true ? <IoMdCloseCircle />: <AiOutlineMenuUnfold className="text-2xl" />
         } 
-      
+      {/*  By default MENU icon থাকবে small device এ , menu icon এ click করলে close icon দেখাবে  */}
 
       </div>
-      <ul className="md:flex gap-6px">
+      <ul className={` duration-300 px-6 md:flex gap-6px absolute md:static
+        ${open? 'top-16' : '-top-60'}
+        bg-yellow-200`}>
+            {/* absolute -> ছোট device এর ক্ষেত্রে fixed position ছাড়াই দেখাবে , আর dollar এর condition টা উপর থেকে effect এর মতো আনার জন্য*/}
         {routes.map((route) => (
           <Link key={route.id} route={route}></Link>
         ))}
