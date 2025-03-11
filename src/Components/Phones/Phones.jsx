@@ -1,10 +1,12 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react'
-import { BarChart, Bar, ResponsiveContainer,XAxis,YAxis ,Tooltip} from 'recharts';
+import { BarChart, Bar,XAxis,YAxis ,Tooltip} from 'recharts';
+import { Audio , Grid} from 'react-loader-spinner'
 
 const Phones = () => {
 
     const [phones,setPhones] = useState([]);
+    const[loading,setLoading] = useState(true) // for Loading Spinner
     // https://openapi.programming-hero.com/api/phones?search=iphone
     
       useEffect(()=>{
@@ -32,6 +34,7 @@ const Phones = () => {
             })
             console.log(phoneWithFakeData)
             setPhones(phoneWithFakeData);
+            setLoading(false);
                })
 
 
@@ -41,6 +44,21 @@ const Phones = () => {
     
     return (
         <div style={{ height: "1000px" }} className=" ml-20 mt-200">
+           {loading && <div className='width-400px height-400px items-center'>
+            <Grid
+  visible={true}
+  height="80"
+  width="80"
+  color="#4fa94d"
+  ariaLabel="grid-loading"
+  radius="12.5"
+  wrapperStyle={{}}
+  wrapperClass="grid-wrapper"
+  />
+           </div>
+           
+           } 
+{/* If loading is true than <Audio> will be executed */}
             <h2 className="text-5xl">Phones : {phones.length}</h2>
             <BarChart width={1200} height={400} data={phones}>
           <Bar dataKey="price" fill="#8884d8" />
