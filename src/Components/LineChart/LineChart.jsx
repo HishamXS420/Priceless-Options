@@ -163,8 +163,8 @@ const LineChart = () => {
           <Tooltip />
           <Legend />
           <Bar dataKey="pv" stackId="a" fill="#8884d8" />
-          <Bar dataKey="amt" fill="#82ca9d" />
-          <Bar dataKey="uv" fill="#ffc658" />
+          <Bar dataKey="amt" stackId="a" fill="#82ca9d" />
+          <Bar dataKey="uv"  fill="#ffc658" />
         </BarChart>
       </ResponsiveContainer>
     </div>
