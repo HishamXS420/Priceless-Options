@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const Link = ({route}) => {
   return (
     <li className="mr-8">
@@ -6,6 +8,8 @@ const Link = ({route}) => {
   );
 };
 
-// Link.propTypes = 
+Link.propTypes = {
+    route: PropTypes.object
+}
 
 export default Link;

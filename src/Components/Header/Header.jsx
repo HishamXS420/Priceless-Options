@@ -1,21 +1,21 @@
 import Link from "./Link/Link";
+import { AiOutlineMenuUnfold } from "react-icons/ai";
+import { useState } from "react";
+import { IoMdCloseCircle } from "react-icons/io";
 
 const Header = () => {
+  const [open, setOpen] = useState(false);
+  const routes = [
+    { id: 1, path: "/", name: "Home" },
+    { id: 2, path: "/about", name: "About" },
+    { id: 3, path: "/contact", name: "Contact" },
+    { id: 4, path: "/dashboard", name: "Dashboard" },
+    { id: 5, path: "/profile", name: "Profile" },
+  ];
 
-    const routes = [
-        { id: 1, path: "/", name: "Home" },
-        { id: 2, path: "/about", name: "About" },
-        { id: 3, path: "/contact", name: "Contact" },
-        { id: 4, path: "/dashboard", name: "Dashboard" },
-        { id: 5, path: "/profile", name: "Profile" }
-      ];
-      
-
-      
-
-    return (
-      <nav>
-                  {/* <div className="navbar bg-base-100 shadow-sm">
+  return (
+    <nav>
+      {/* <div className="navbar bg-base-100 shadow-sm">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -56,16 +56,20 @@ const Header = () => {
     <a className="btn">Button</a>
   </div>
 </div> */}
-<ul className="md:flex gap-6px">
-{
-            routes.map(route => <Link  key={route.id} route={route}></Link>) 
-        }
-</ul>
+      <div  className='md:hidden text-2xl' onClick={() => setOpen(!open)}>
+        {
+            open == true ? <IoMdCloseCircle />: <AiOutlineMenuUnfold className="text-2xl" />
+        } 
       
 
-
+      </div>
+      <ul className="md:flex gap-6px">
+        {routes.map((route) => (
+          <Link key={route.id} route={route}></Link>
+        ))}
+      </ul>
     </nav>
-    );
+  );
 };
 
 export default Header;
